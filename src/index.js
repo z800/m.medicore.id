@@ -1,12 +1,46 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+
+import Login from './Pages/Login';
+
+// HashRouter
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+
 import * as serviceWorker from './serviceWorker';
+
+function getUrlVars() {
+  var vars = [], hash;
+  var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('/');
+
+  for (var i = 0; i < hashes.length; i++) {
+    hash = hashes[i].split('=');
+    vars.push(hash[0]);
+    vars[hash[0]] = hash[1];
+  }
+  return vars;
+}
+
+var urlParams = getUrlVars();
+
+switch (urlParams[3]) {
+  case "":
+      document.getElementById('body').className='color-theme-blue'
+    break;
+
+  case undefined:
+  default:
+      document.getElementById('body').className='color-theme-blue'
+    break;
+}
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <Switch>
+        <Route exact path="/" component={Login} />
+        <Route exact path="/Login" component={Login} />
+      </Switch>
+    </BrowserRouter>,
   </React.StrictMode>,
   document.getElementById('root')
 );
