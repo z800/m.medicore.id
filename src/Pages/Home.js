@@ -17,8 +17,8 @@ function Home() {
 
   useEffect(() => {
 
-    const day        = setHari(namaHari[date.getDay()])
-    // const jam     = date.getHours()
+    const day     = setHari( namaHari[date.getDay()] )
+    const jam     = setJam( date.getHours() )
     // const menit   = date.getMinutes()
     // const detik   = date.getSeconds()
 
@@ -284,48 +284,6 @@ function Home() {
                           </div>
                       </div>
                   </div>
-
-                  <h2 className="block-title">Latest Comments</h2>
-                  <ul className="list-group mb-4 media-list ">
-                      <li className="list-group-item">
-                          <a href="#" className="media shadow-15">
-                              <div className="w-auto h-100">
-                                  <figure className="avatar avatar-80">
-                                  <img src="img/user1.png" alt="" />
-                                  </figure>
-                              </div>
-                              <div className="media-body">
-                                  <h5>John Doe <span className="status-online bg-success"></span></h5>
-                                  <p className="small mb-2 text-secondary">Date: 18-12-2018</p>
-                                  <p>My view is to create greate things </p>
-                              </div>
-                          </a>
-                      </li>
-                      <li className="list-group-item">
-                          <a href="#" className="media shadow-15">
-                              <div className="w-auto h-100">
-                                  <figure className="avatar avatar-80"><img src="img/user2.png" alt="" /> </figure>
-                              </div>
-                              <div className="media-body">
-                                  <h5>Angeliina Hardy <span className="status-online bg-warning"></span></h5>
-                                  <p className="small mb-2 text-secondary">Date: 18-12-2018</p>
-                                  <p>My view is to create greate things </p>
-                              </div>
-                          </a>
-                      </li>
-                      <li className="list-group-item">
-                          <a href="#" className="media shadow-15">
-                              <div className="w-auto h-100">
-                                  <figure className="avatar avatar-80"><img src="img/user3.png" alt="" /> </figure>
-                              </div>
-                              <div className="media-body">
-                                  <h5>Arnold Johnsons <span className="status-online bg-danger"></span></h5>
-                                  <p className="small mb-2 text-secondary">Date: 18-12-2018</p>
-                                  <p>My view is to create greate things </p>
-                              </div>
-                          </a>
-                      </li>
-                  </ul>
 
                   <div className="col-12 mb-4">
                       <div className="row">
