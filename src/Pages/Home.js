@@ -5,29 +5,17 @@ import axios from "axios";
 
 function Home() {
 
-  const [fullname, setFullname] = useState("Lintang");
-  const [jam, setJam]           = useState("");
-  const [menit, setMenit]       = useState("");
-  const [detik, setDetik]       = useState("");
-  const [hari, setHari]         = useState("");
-  const namaHari                = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jum'at", "Sabtu"];
-  const date                    = new Date();
-
-
+  const [fullname, setFullname]         = useState("Lintang");
+  const [FormatHari, setFormatHari]     = useState("");
+  const [kota, setKota]                 = useState("Malang");
 
   useEffect(() => {
 
-    const day     = setHari( namaHari[date.getDay()] )
-    const jam     = setJam( date.getHours() )
-    // const menit   = date.getMinutes()
-    // const detik   = date.getSeconds()
-
-    // setHari( day )
     window.setInterval(function () {
 
-      console.log( Utils.formatDate(date) )
+      setFormatHari( Utils.formatHari() )
 
-    }.bind(this), 1100);
+    }.bind(this), 1000);
 
   });
 
@@ -186,10 +174,9 @@ function Home() {
                       <div className="card">
                           <div className="card-body">
                               <i className="material-icons text-warning icon-weather icon-4x">wb_sunny</i>
-                              <p className="text-uppercase font-weight-bold text-primary">New York</p>
-                              <h1 className="display-4 mt-4">30<sup><small>o</small></sup>C</h1>
-                              <p className="mb-4">{hari}, {jam}:{menit}:{detik}</p>
-                              <h1><span className="font-weight-light small">Selamat {jam < 12 ? `Pagi` : ( jam < 18 ? `Sore` : `Malam` )}</span><br /><b>{fullname}</b></h1>
+                              <p className="text-uppercase font-weight-bold text-primary">{kota}</p>
+                              <p className="mb-4">{FormatHari}</p>
+                              <h1><span className="font-weight-light small">Selamat {Utils.jam() < 12 ? `Pagi` : ( Utils.jam() < 18 ? `Sore` : `Malam` )}</span><br /><b>{fullname}</b></h1>
                           </div>
                       </div>
                   </div>

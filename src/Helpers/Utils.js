@@ -1,20 +1,45 @@
+const date      = new Date();
+const namaHari  = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jum'at", "Sabtu"];
+
 function formatName(label) {
    // your logic
 }
 
-function formatDate(date) {
+function formatHari() {
 
-  const dates   = date;
-  const jam     = dates.getHours()
-  const menit   = dates.getMinutes()
-  const detik   = dates.getSeconds()
+  return this.hari() + ' ' + this.jam() + ':' + this.menit() + ':' + this.detik()
+  
+}
 
-  return 'dd'
+function hari() {
+
+  return namaHari[date.getDay()]
 
 }
 
-// Now you have to export each function you want
+function jam() {
+
+  return date.getHours()
+
+}
+
+function menit() {
+
+  return date.getMinutes()
+
+}
+
+function detik() {
+
+  return date.getSeconds()
+
+}
+
 export {
-   formatName,
-   formatDate,
+  hari,
+  jam,
+  menit,
+  detik,
+  formatName,
+  formatHari,
 };
