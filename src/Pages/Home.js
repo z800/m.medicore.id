@@ -90,7 +90,7 @@ export class Home extends Component {
                         <a href="index.html" className="sidebar-close">
                             <div className="item-title">
                                 <i className="material-icons">star</i> Welcome
-                            </div>
+                            </div> 
                         </a>
                     </li>
                     <li className="nav-item dropdown">
