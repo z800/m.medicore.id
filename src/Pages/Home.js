@@ -1,4 +1,4 @@
-import React, { Component, Suspense, useState, useEffect } from 'react';
+import React, { Component, Suspense, useState, useEffect, useRef } from 'react';
 import {Link} from "react-router-dom";
 import { Table, Utils } from '../Helpers';
 import axios from "axios";
@@ -8,16 +8,18 @@ function Home() {
   const [fullname, setFullname]         = useState("Lintang");
   const [FormatHari, setFormatHari]     = useState("");
   const [kota, setKota]                 = useState("Malang");
+  const [showLoading, setShowLoading]   = useState(false)
+
+  const [dt, setDt] = useState(new Date().toLocaleString());
 
   useEffect(() => {
+    let secTimer = setInterval( () => {
+      // setDt(new Date().toLocaleString())
+      setFormatHari( Utils.formatHari( new Date() ) )
+    },1000)
 
-    window.setInterval(function () {
-
-      setFormatHari( Utils.formatHari() )
-
-    }.bind(this), 1000);
-
-  });
+    return () => clearInterval(secTimer);
+  }, []);
 
   return (
 
@@ -176,7 +178,7 @@ function Home() {
                               <i className="material-icons text-warning icon-weather icon-4x">wb_sunny</i>
                               <p className="text-uppercase font-weight-bold text-primary">{kota}</p>
                               <p className="mb-4">{FormatHari}</p>
-                              <h1><span className="font-weight-light small">Selamat {Utils.jam() < 12 ? `Pagi` : ( Utils.jam() < 18 ? `Sore` : `Malam` )}</span><br /><b>{fullname}</b></h1>
+                              <h1><span className="font-weight-light small">Selamat {Utils.jam(new Date()) < 12 ? `Pagi` : ( Utils.jam(new Date()) < 18 ? `Sore` : `Malam` )}</span><br /><b>{fullname}</b></h1>
                           </div>
                       </div>
                   </div>
@@ -196,8 +198,6 @@ function Home() {
                           </div>
                       </div>
                   </div>
-          
-
 
                   <h2 className="block-title">Trending Project</h2>
                   <div className="row mx-0 mb-4">
