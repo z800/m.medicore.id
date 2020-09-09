@@ -63,56 +63,52 @@ export class Login extends Component {
 
     render() {
 
-        const{ phone } = this.state;
+      const{ phone } = this.state;
 
-        return (
+      return (
 
-            <>
+        <>
 
-            <div className="wrapper">
+        {/* page main start */}
 
-                {/* page main start */}
+        <div className="page">
+            <div className="page-content h-100">
+                <div className="background theme-header"><img src="img/city2.jpg" alt="" /></div>
+                <div className="row mx-0 h-100 justify-content-center">
+                    <div className="col-10 col-md-6 col-lg-4 my-3 mx-auto text-center align-self-center">
+                        <img src="img/logo-w.png" alt="" className="login-logo" />
 
-                <div className="page">
-                    <div className="page-content h-100">
-                        <div className="background theme-header"><img src="img/city2.jpg" alt="" /></div>
-                        <div className="row mx-0 h-100 justify-content-center">
-                            <div className="col-10 col-md-6 col-lg-4 my-3 mx-auto text-center align-self-center">
-                                <img src="img/logo-w.png" alt="" className="login-logo" />
-
-                                {/* <h1 className="login-title"><small>Welcomes to,</small><br />Overux</h1> */}
-
-                                <br />
-                                <br />
-                                <br />
-                                <br />
-                                <br />
-
-                                {/* <h5 className="text-white mb-4">Sing in</h5> */}
-                                <div className="login-input-content ">
-                                    <div className="form-group">
-                                        <input type="text" className="form-control rounded text-center" placeholder="Masukkan Nomor Hp" onChange={this.handleChange} />
-                                    </div>
-                                    <a href="dashboard.html" className="btn btn-block btn-success rounded border-0 z-3" onClick={this.handleSubmit}>Masuk</a>
-                                </div>
-                                <br />
-                                <br />
-                            </div>
-                        </div>
+                        {/* <h1 className="login-title"><small>Welcomes to,</small><br />Overux</h1> */}
 
                         <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
 
+                        {/* <h5 className="text-white mb-4">Sing in</h5> */}
+                        <div className="login-input-content ">
+                            <div className="form-group">
+                                <input type="text" className="form-control rounded text-center" placeholder="Masukkan Nomor Hp" onChange={this.handleChange} />
+                            </div>
+                            <a href="dashboard.html" className="btn btn-block btn-success rounded border-0 z-3" onClick={this.handleSubmit}>Masuk</a>
+                        </div>
+                        <br />
                     </div>
-
                 </div>
 
-                {/* page main ends */}
+                <br />
 
             </div>
 
-            </>
+        </div>
 
-        )
+        {/* page main ends */}
+
+        </>
+
+      )
 
     }
 

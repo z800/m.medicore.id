@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import Login from './Pages/Login';
+import Home from './Pages/Home';
 
 // HashRouter
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
@@ -29,7 +30,7 @@ switch (urlParams[3]) {
 
   case undefined:
   default:
-      document.getElementById('body').className='color-theme-blue'
+      document.getElementById('body').className='color-theme-blue theme-dark'
     break;
 }
 
@@ -38,7 +39,7 @@ ReactDOM.render(
     <BrowserRouter>
       <Switch>
         <Route exact path="/" component={Login} />
-        <Route exact path="/Login" component={Login} />
+        <Route exact path="/Home" component={Home} />
       </Switch>
     </BrowserRouter>,
   </React.StrictMode>,
