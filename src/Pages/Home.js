@@ -34,6 +34,23 @@ const Home = () => {
 
   }, [])
 
+  useEffect(() => {
+
+    var elem1 = document.getElementsByClassName('output_1hFrT')[0];
+
+    elem1.addEventListener('scroll', handleScroll);
+
+    // window.addEventListener('scroll', handleScroll);
+    // return () => window.removeEventListener('scroll', handleScroll);
+
+  }, []);
+
+  const handleScroll = () => {
+    console.log( window.innerHeight)
+    // if (window.innerHeight + document.documentElement.scrollTop !== document.documentElement.offsetHeight) return;
+    // console.log('Fetch more list items!');
+  }
+
   const fetchMoreData = () => {
     const newData = [...rs, ...generateRandomData(5)];
     setTimeout(() => {
@@ -178,7 +195,7 @@ const Home = () => {
                     loadMore={fetchMoreData}
                     hasMore={true}
                     loader={(
-                      null
+                      <h4 key={0}>Loading...</h4>
                     )}
                   >
 
@@ -199,8 +216,8 @@ const Home = () => {
                                           </div>
                                       </a>
                                   </div>
-                                  <div class="card-footer p-0 border-0">
-                                    <button class="btn btn-primary btn-block btn-lg rounded-0"> Masuk </button>
+                                  <div className="card-footer p-0 border-0">
+                                    <button className="btn btn-primary btn-block btn-lg rounded-0"> Masuk </button>
                                   </div>
 
                               </div>
