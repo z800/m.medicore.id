@@ -150,22 +150,21 @@ const Home = () => {
                       </div>
                   </div>
 
-
                   <div className="col-12 mb-4">
                       <div className="card">
                           <div className="card-body">
                               <div className="text-center justify-content-between d-flex">
-                                      <button className="btn btn-sm btn-info rounded text-white"><i className="material-icons w-25px">local_hospital</i></button>
+                                <button className="btn btn-sm btn-info rounded text-white"><i className="material-icons w-25px">local_hospital</i></button>
 
-                                      <form className="text-center">
-                                          <label className="sr-only">Your Name</label>
-                                          <div className="input-group">
-                                              <div className="input-group-prepend">
-                                                  <span className="input-group-text"><i className="material-icons">search</i></span>
-                                              </div>
-                                              <input type="text" className="form-control" placeholder="Layanan terdekat." />
-                                          </div>
-                                      </form>
+                                <form className="text-center">
+                                    <label className="sr-only">Your Name</label>
+                                    <div className="input-group">
+                                        <div className="input-group-prepend">
+                                            <span className="input-group-text"><i className="material-icons">search</i></span>
+                                        </div>
+                                        <input type="text" className="form-control" placeholder="Layanan terdekat." />
+                                    </div>
+                                </form>
                               </div>
 
                           </div>
@@ -200,14 +199,10 @@ const Home = () => {
                                           </div>
                                       </a>
                                   </div>
-                                  <div className="card-footer">
-                                      <div className="row">
-                                      <div className="col">
-                                              <button type="button" className="col btn btn-info"> Masuk </button>
-
-                                      </div>
-                                      </div>
+                                  <div class="card-footer p-0 border-0">
+                                    <button class="btn btn-primary btn-block btn-lg rounded-0"> Masuk </button>
                                   </div>
+
                               </div>
                           </div>
                       </div>
