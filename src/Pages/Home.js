@@ -1,25 +1,46 @@
 import React, { Component, Suspense, useState, useEffect, useRef } from 'react';
 import {Link} from "react-router-dom";
 import { Table, Utils } from '../Helpers';
+import InfiniteScroll from 'react-infinite-scroller';
+
 import axios from "axios";
 
-function Home() {
+const Home = () => {
 
+  const Avatar                          = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADMAAAAzCAYAAAA6oTAqAAAAEXRFWHRTb2Z0d2FyZQBwbmdjcnVzaEB1SfMAAABQSURBVGje7dSxCQBACARB+2/ab8BEeQNhFi6WSYzYLYudDQYGBgYGBgYGBgYGBgYGBgZmcvDqYGBgmhivGQYGBgYGBgYGBgYGBgYGBgbmQw+P/eMrC5UTVAAAAABJRU5ErkJggg==';
   const [fullname, setFullname]         = useState("Lintang");
   const [FormatHari, setFormatHari]     = useState("");
   const [kota, setKota]                 = useState("Malang");
   const [showLoading, setShowLoading]   = useState(false)
-
-  const [dt, setDt] = useState(new Date().toLocaleString());
+  const [rs, setRs]                     = useState([
+                                            { "id": 1, "photo": Avatar, "name": "Tamma Everill", "phone": "+351 888 411 5474" },
+                                            { "id": 2, "photo": Avatar, "name": "Alejandrina Alexis", "phone": "+62 188 649 7200" },
+                                            { "id": 3, "photo": Avatar, "name": "Hakim Bruntjen", "phone": "+86 241 773 8545" },
+                                            { "id": 4, "photo": Avatar, "name": "Prudi Dagwell", "phone": "+62 606 216 1097" },
+                                            { "id": 5, "photo": Avatar, "name": "Prent Frizell", "phone": "+86 808 891 5427" },
+                                            { "id": 6, "photo": Avatar, "name": "Curtis Enterlein", "phone": "+64 836 110 1773" },
+                                            { "id": 7, "photo": Avatar, "name": "Margret Brissard", "phone": "+372 242 306 0100" },
+                                          ]);
 
   useEffect(() => {
     let secTimer = setInterval( () => {
-      // setDt(new Date().toLocaleString())
       setFormatHari( Utils.formatHari( new Date() ) )
     },1000)
 
     return () => clearInterval(secTimer);
   }, []);
+
+
+  const fetchMoreData = () => {
+    console.log( 'dd' )
+    const newData = [...rs, ...rs];
+    console.log( newData )
+
+    // console.log( newData )
+    // setTimeout(() => {
+    //   setRs(newData);
+    // }, 2000);
+  }
 
   return (
 
@@ -66,97 +87,9 @@ function Home() {
       </div>
       {/* sidebar right ends */}
 
-      {/* fullscreen menu start */}
-      <div className="modal fade popup-fullmenu" id="fullscreenmenu" tabIndex="-1" role="dialog" aria-hidden="true">
-          <div className="modal-dialog" role="document">
-              <div className="modal-content fullscreen-menu">
-                  <div className="modal-header">
-                      <button type="button" className="close text-white" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                      </button>
-                  </div>
-                  <div className="modal-body">
-                      <a href="/profile/" className="block user-fullmenu popup-close">
-                          <figure>
-                              <img src="img/user1.png" alt="" />
-                          </figure>
-                          <div className="media-content">
-                              <h6>John Doe<br /><small>India</small></h6>
-                          </div>
-                      </a>
-                      <br />
-                      <div className="row mx-0">
-                          <div className="col">
-                              <div className="menulist">
-                                  <ul>
-                                      <li>
-                                          <a href="index.html" className="popup-close">
-                                              <div className="item-title">
-                                                  <i className="icon material-icons md-only">poll</i> Dashboard
-                                              </div>
-                                          </a>
-                                      </li>
-                                      <li>
-                                          <a href="projects.html" className="popup-close">
-                                              <div className="item-title">
-                                                  <i className="icon material-icons md-only">add_shopping_cart</i> Projects
-                                              </div>
-                                          </a>
-                                      </li>
-                                      <li>
-                                          <a href="project-detail.html" className="popup-close">
-                                              <div className="item-title">
-                                                  <i className="icon material-icons md-only">filter_none</i> Details
-                                              </div>
-                                          </a>
-                                      </li>
-                                      <li>
-                                          <a href="user-profile.html" className="popup-close">
-                                              <div className="item-title">
-                                                  <i className="icon material-icons md-only">person</i> Profile
-                                              </div>
-                                          </a>
-                                      </li>
-                                      <li>
-                                          <a href="aboutus.html" className="popup-close">
-                                              <div className="item-title">
-                                                  <i className="icon material-icons md-only">domain</i> About
-                                              </div>
-                                          </a>
-                                      </li>
-                                      <li>
-                                          <a href="component.html" className="popup-close">
-                                              <div className="item-title">
-                                                  <i className="icon material-icons md-only">pages</i> Component
-                                              </div>
-                                          </a>
-                                      </li>
-                                  </ul>
-                              </div>
-                          </div>
-                      </div>
-                      <br />
-                      <div className="row mx-0">
-                          <div className="col">
-                              <a href="login.html" className="rounded btn btn-outline-white text-white popup-close">Logout</a>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
-      {/* fullscreen menu ends */}
-
       {/* page main start */}
       <div className="page">
-          <form className="searchcontrol">
-              <div className="input-group">
-                  <div className="input-group-prepend">
-                      <button type="button" className="input-group-text close-search"><i className="material-icons">keyboard_backspace</i></button>
-                  </div>
-                  <input type="email" className="form-control border-0" placeholder="Search..." aria-label="Username" />
-              </div>
-          </form>
+
           <header className="row m-0 fixed-header">
               <div className="left"></div>
               <div className="col center">
@@ -170,8 +103,10 @@ function Home() {
                   <a onClick={e => e.preventDefault()} className="menu-right"><i className="material-icons">person</i></a>
               </div>
           </header>
+          
           <div className="page-content">
               <div className="content-sticky-footer">
+
                   <div className="col-12 mb-4">
                       <div className="card">
                           <div className="card-body">
@@ -199,40 +134,78 @@ function Home() {
                       </div>
                   </div>
 
-                  <h2 className="block-title">Trending Project</h2>
-                  <div className="row mx-0 mb-4">
-                      <div className="col">
-                          <div className="card">
-                              <div className="card-body">
-                                  <a href="#" className="media">
-                                      <div className="media-body">
-                                          <h5>Karla Sports App </h5>
-                                          <p>25 November 2018</p>
-                                      </div>
-                                      <div className="w-auto h-100">
-                                          <span className="text-primary">Completed</span>
-                                      </div>
-                                  </a>
+                  <div className="col-12 mb-4">
+                      <div className="card">
+                          <div className="card-body">
+                              <div className="text-center justify-content-between d-flex">
+                                      <button className="btn btn-sm btn-info rounded text-white"><i className="material-icons w-25px">local_hospital</i></button>
+
+                                      <form className="text-center">
+                                          <label className="sr-only">Your Name</label>
+                                          <div className="input-group">
+                                              <div className="input-group-prepend">
+                                                  <span className="input-group-text"><i className="material-icons">search</i></span>
+                                              </div>
+                                              <input type="text" className="form-control" placeholder="Layanan terdekat." />
+                                          </div>
+                                      </form>
                               </div>
-                              <div className="card-footer">
-                                  <div className="row">
-                                      <div className="col">
-                                          <i className="material-icons text-warning">star</i>
-                                          <span className="post-seconds">4.9</span>
-                                      </div>
-                                      <div className="col">
-                                          <i className="material-icons text-grey">schedule</i>
-                                          <span className="post-seconds">254 <span>hrs</span></span>
-                                      </div>
-                                      <div className="col">
-                                          <i className="material-icons text-grey">monetization_on</i>
-                                          <span className="post-seconds">4000 <span>$</span></span>
+
+                          </div>
+                      </div>
+                  </div>
+
+                  <InfiniteScroll
+                    initialLoad={false}
+                    loadMore={fetchMoreData}
+                    hasMore={true}
+                    loader={(
+                      <h4 key={0}>Loading...</h4>
+                    )}
+                  >
+
+                    {rs.map((i, index) => (
+
+                      <div className="row mx-0 mb-4" key={i.id}>
+                          <div className="col">
+                              <div className="card">
+                                  <div className="card-body">
+                                      <a href="#" className="media">
+                                          <div className="w-auto h-100">
+                                              <figure className="avatar avatar-80"><img src={`${i.photo}`} alt="" /> </figure>
+                                          </div>
+                                          <div className="media-body">
+                                              <h5>{i.name} </h5>
+                                              <p className="small mb-2 text-secondary">{i.phone}</p>
+                                              <p>My view is to create greate things </p>
+                                          </div>
+                                      </a>
+                                  </div>
+                                  <div className="card-footer">
+                                      <div className="row">
+                                          <div className="col">
+                                              <i className="material-icons text-warning">star</i>
+                                              <span className="post-seconds">4.9</span>
+                                          </div>
+                                          <div className="col">
+                                              <i className="material-icons text-grey">schedule</i>
+                                              <span className="post-seconds">254 <span>hrs</span></span>
+                                          </div>
+                                          <div className="col">
+                                              <i className="material-icons text-grey">monetization_on</i>
+                                              <span className="post-seconds">4000 <span>$</span></span>
+                                          </div>
                                       </div>
                                   </div>
                               </div>
                           </div>
                       </div>
-                  </div>
+
+
+                    ))}
+
+                  </InfiniteScroll>
+
               </div>
           </div>
       </div>
