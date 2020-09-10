@@ -2,6 +2,7 @@ import React, { Component, Suspense, useState, useEffect, useRef } from 'react';
 import {Link} from "react-router-dom";
 import { Table, Utils } from '../Helpers';
 import InfiniteScroll from 'react-infinite-scroller';
+import { generateRandomData } from './helpers';
 
 import axios from "axios";
 
@@ -13,13 +14,7 @@ const Home = () => {
   const [kota, setKota]                 = useState("Malang");
   const [showLoading, setShowLoading]   = useState(false)
   const [rs, setRs]                     = useState([
-                                            { "id": 1, "photo": Avatar, "name": "Tamma Everill", "phone": "+351 888 411 5474" },
-                                            { "id": 2, "photo": Avatar, "name": "Alejandrina Alexis", "phone": "+62 188 649 7200" },
-                                            { "id": 3, "photo": Avatar, "name": "Hakim Bruntjen", "phone": "+86 241 773 8545" },
-                                            { "id": 4, "photo": Avatar, "name": "Prudi Dagwell", "phone": "+62 606 216 1097" },
-                                            { "id": 5, "photo": Avatar, "name": "Prent Frizell", "phone": "+86 808 891 5427" },
-                                            { "id": 6, "photo": Avatar, "name": "Curtis Enterlein", "phone": "+64 836 110 1773" },
-                                            { "id": 7, "photo": Avatar, "name": "Margret Brissard", "phone": "+372 242 306 0100" },
+                                            { "id": 1, "photo": Avatar, "name": "Klinik Rahma Husada Celaket", "phone": "+351 888 411 5474", "loc": "2 Km dari lokasi Anda." },
                                           ]);
 
   useEffect(() => {
@@ -30,16 +25,20 @@ const Home = () => {
     return () => clearInterval(secTimer);
   }, []);
 
+  useEffect(() => {
+
+    var script = document.createElement('script')
+    script.src = 'js/Home.js'
+    script.class = "external-script"
+    document.body.appendChild(script);
+
+  }, [])
 
   const fetchMoreData = () => {
-    console.log( 'dd' )
-    const newData = [...rs, ...rs];
-    console.log( newData )
-
-    // console.log( newData )
-    // setTimeout(() => {
-    //   setRs(newData);
-    // }, 2000);
+    const newData = [...rs, ...generateRandomData(5)];
+    setTimeout(() => {
+      setRs(newData);
+    }, 2000);
   }
 
   return (
@@ -53,7 +52,7 @@ const Home = () => {
                   <a onClick={e => e.preventDefault()} className="menu-left-close"><i className="material-icons">keyboard_backspace</i></a>
               </div>
               <div className="col center">
-                  <a href="" className="logo">Best Rated</a>
+                  <a href="" className="logo">Medicore</a>
               </div>
           </header>
           <div className="page-content text-white">
@@ -69,12 +68,11 @@ const Home = () => {
                                       <h4 className="mt-0 text-white">Max Johnsons</h4>
                                       <p className="text-white">VP, Maxartkiller Co. Ltd., India</p>
                                       <h5 className="text-warning my-2">
-                    <i className="material-icons">star</i>
-                    <i className="material-icons">star</i>
-                    <i className="material-icons">star</i>
-                    <i className="material-icons">star</i>
-
-                  </h5>
+                                        <i className="material-icons">star</i>
+                                        <i className="material-icons">star</i>
+                                        <i className="material-icons">star</i>
+                                        <i className="material-icons">star</i>
+                                      </h5>
                                       <div className="mb-0">Overux is HTML template based on Bootstrap 4.1 framework. This html template can be used in various business domains like Manufacturing, inventory, IT, administration etc.</div>
                                       <br />
                                   </div>
@@ -96,14 +94,14 @@ const Home = () => {
                   <a href="" className="logo">
                       <figure>
                         <img src="img/logo-w.png" alt="" />
-                      </figure> Overux
+                      </figure> Medicore
                   </a>
               </div>
               <div className="right">
                   <a onClick={e => e.preventDefault()} className="menu-right"><i className="material-icons">person</i></a>
               </div>
           </header>
-          
+
           <div className="page-content">
               <div className="content-sticky-footer">
 
@@ -118,21 +116,40 @@ const Home = () => {
                       </div>
                   </div>
 
-                  <div className="col-12 mb-4">
-                      <div className="card">
-                          <div className="card-body">
-                              <p className="text-uppercase font-weight-bold text-primary">Take First</p>
-                              <div className="text-center justify-content-between d-flex">
-                                  <button className="btn btn-danger rounded sq-btn text-white"><i className="material-icons w-25px">home_outline</i></button>
-                                  <button className="btn btn-primary rounded sq-btn text-white"><i className="material-icons w-25px">mail_outline</i></button>
-                                  <button className="btn btn-warning rounded sq-btn text-white"><i className="material-icons w-25px">chat_outline</i></button>
-                                  <button className="btn btn-success rounded sq-btn text-white"><i className="material-icons w-25px">notifications_outline</i></button>
-                                  <button className="btn btn-info rounded sq-btn text-white"><i className="material-icons w-25px">stars_outline</i></button>
+                  <div className="w-100">
+                      <div className="carosel">
+                          <div className="swiper-container swiper-init swipermultiple">
+                              <div className="swiper-pagination"></div>
+                              <div className="swiper-wrapper">
+                                  <div className="swiper-slide">
+                                      <div className="swiper-content-block bg-white shadow-15">
+                                          <p className="text-uppercase font-weight-bold text-primary">Jadwal Periksa</p>
+                                          <h4 className="title-small-carousel">Dr. Bobi</h4>
+                                          <p className="text-white">Praktek : <br />17:00 - 21:00</p>
+                                          <p>22 November 2020</p>
+                                      </div>
+                                  </div>
+                                  <div className="swiper-slide">
+                                      <div className="swiper-content-block bg-danger shadow-15">
+                                          <p className="text-uppercase font-weight-bold text-primary">Kode e-Lab</p>
+                                          <h4 className="title-small-carousel">982-372-3</h4>
+                                          <p className="text-white">Jam Buka<br />17:00 - 21:00</p>
+                                          <p>22 November 2020</p>
+                                      </div>
+                                  </div>
+                                  <div className="swiper-slide">
+                                      <div className="swiper-content-block bg-info shadow-15">
+                                          <p className="text-uppercase font-weight-bold text-primary">Kode e-Resep</p>
+                                          <h4 className="title-small-carousel">289-3748-293</h4>
+                                          <p className="text-white">Jam Buka<br />17:00 - 21:00</p>
+                                          <p>22 November 2020</p>
+                                      </div>
+                                  </div>
                               </div>
-
                           </div>
                       </div>
                   </div>
+
 
                   <div className="col-12 mb-4">
                       <div className="card">
@@ -155,12 +172,14 @@ const Home = () => {
                       </div>
                   </div>
 
+                  {/* loader ->> <h4 key={0}>Loading...</h4> */}
+
                   <InfiniteScroll
                     initialLoad={false}
                     loadMore={fetchMoreData}
                     hasMore={true}
                     loader={(
-                      <h4 key={0}>Loading...</h4>
+                      null
                     )}
                   >
 
@@ -176,25 +195,17 @@ const Home = () => {
                                           </div>
                                           <div className="media-body">
                                               <h5>{i.name} </h5>
-                                              <p className="small mb-2 text-secondary">{i.phone}</p>
-                                              <p>My view is to create greate things </p>
+                                              <p className="small mb-2 text-secondary">{i.loc}</p>
+                                              <p>Poli Bedah, Poli Mata</p>
                                           </div>
                                       </a>
                                   </div>
                                   <div className="card-footer">
                                       <div className="row">
-                                          <div className="col">
-                                              <i className="material-icons text-warning">star</i>
-                                              <span className="post-seconds">4.9</span>
-                                          </div>
-                                          <div className="col">
-                                              <i className="material-icons text-grey">schedule</i>
-                                              <span className="post-seconds">254 <span>hrs</span></span>
-                                          </div>
-                                          <div className="col">
-                                              <i className="material-icons text-grey">monetization_on</i>
-                                              <span className="post-seconds">4000 <span>$</span></span>
-                                          </div>
+                                      <div className="col">
+                                              <button type="button" className="col btn btn-info"> Masuk </button>
+
+                                      </div>
                                       </div>
                                   </div>
                               </div>
