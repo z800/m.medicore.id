@@ -36,17 +36,27 @@ const Home = () => {
 
   useEffect(() => {
 
-    var elem1 = document.getElementsByClassName('output_1hFrT')[0];
+    window.addEventListener('scroll', function() {
+      // document.getElementById('showScroll').innerHTML = window.pageYOffset + 'px';
+        console.log( "pageoffset", window.pageYOffset )
+    });
 
-    elem1.addEventListener('scroll', handleScroll);
+    // var elem1 = document.getElementsByClassName('ddd')[0];
+    // console.log( "elem1", elem1 )
+    // elem1.addEventListener('scroll', handleScroll);
 
     // window.addEventListener('scroll', handleScroll);
     // return () => window.removeEventListener('scroll', handleScroll);
 
   }, []);
 
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const handleScroll = () => {
-    console.log( window.innerHeight)
+    console.log( "handleScroll" )
     // if (window.innerHeight + document.documentElement.scrollTop !== document.documentElement.offsetHeight) return;
     // console.log('Fetch more list items!');
   }
@@ -136,7 +146,6 @@ const Home = () => {
                   <div className="w-100">
                       <div className="carosel">
                           <div className="swiper-container swiper-init swipermultiple">
-                              <div className="swiper-pagination"></div>
                               <div className="swiper-wrapper">
                                   <div className="swiper-slide">
                                       <div className="swiper-content-block bg-white shadow-15">
@@ -170,64 +179,322 @@ const Home = () => {
                   <div className="col-12 mb-4">
                       <div className="card">
                           <div className="card-body">
-                              <div className="text-center justify-content-between d-flex">
-                                <button className="btn btn-sm btn-info rounded text-white"><i className="material-icons w-25px">local_hospital</i></button>
 
-                                <form className="text-center">
-                                    <label className="sr-only">Your Name</label>
-                                    <div className="input-group">
-                                        <div className="input-group-prepend">
-                                            <span className="input-group-text"><i className="material-icons">search</i></span>
-                                        </div>
-                                        <input type="text" className="form-control" placeholder="Layanan terdekat." />
-                                    </div>
-                                </form>
-                              </div>
+                            <div className="input-group">
+                                <input type="email" className="form-control" placeholder="Layanan terdekat" aria-label="Username" />
+                                <div className="input-group-append">
+                                    <button type="button" className="input-group-text close-search"><i className="material-icons">search</i></button>
+                                </div>
+
+                            </div>
 
                           </div>
                       </div>
                   </div>
 
                   {/* loader ->> <h4 key={0}>Loading...</h4> */}
+                  <div className="ddd">
 
-                  <InfiniteScroll
-                    initialLoad={false}
-                    loadMore={fetchMoreData}
-                    hasMore={true}
-                    loader={(
-                      <h4 key={0}>Loading...</h4>
-                    )}
-                  >
+                    <div className="row mx-0 mb-4">
+                        <div className="col">
+                            <div className="card">
+                                <div className="card-body">
+                                    <a href="#" className="media">
+                                        <div className="w-auto h-100">
+                                            <figure className="avatar avatar-80"></figure>
+                                        </div>
+                                        <div className="media-body">
+                                            <h5>dd </h5>
+                                            <p className="small mb-2 text-secondary">ddd</p>
+                                            <p>Poli Bedah, Poli Mata</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div className="card-footer p-0 border-0">
+                                  <button className="btn btn-primary btn-block btn-lg rounded-0"> Masuk </button>
+                                </div>
 
-                    {rs.map((i, index) => (
+                            </div>
+                        </div>
+                    </div>
 
-                      <div className="row mx-0 mb-4" key={i.id}>
-                          <div className="col">
-                              <div className="card">
-                                  <div className="card-body">
-                                      <a href="#" className="media">
-                                          <div className="w-auto h-100">
-                                              <figure className="avatar avatar-80"><img src={`${i.photo}`} alt="" /> </figure>
-                                          </div>
-                                          <div className="media-body">
-                                              <h5>{i.name} </h5>
-                                              <p className="small mb-2 text-secondary">{i.loc}</p>
-                                              <p>Poli Bedah, Poli Mata</p>
-                                          </div>
-                                      </a>
-                                  </div>
-                                  <div className="card-footer p-0 border-0">
-                                    <button className="btn btn-primary btn-block btn-lg rounded-0"> Masuk </button>
-                                  </div>
+                    <div className="row mx-0 mb-4">
+                        <div className="col">
+                            <div className="card">
+                                <div className="card-body">
+                                    <a href="#" className="media">
+                                        <div className="w-auto h-100">
+                                            <figure className="avatar avatar-80"></figure>
+                                        </div>
+                                        <div className="media-body">
+                                            <h5>dd </h5>
+                                            <p className="small mb-2 text-secondary">ddd</p>
+                                            <p>Poli Bedah, Poli Mata</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div className="card-footer p-0 border-0">
+                                  <button className="btn btn-primary btn-block btn-lg rounded-0"> Masuk </button>
+                                </div>
 
-                              </div>
-                          </div>
-                      </div>
+                            </div>
+                        </div>
+                    </div>
 
+                    <div className="row mx-0 mb-4">
+                        <div className="col">
+                            <div className="card">
+                                <div className="card-body">
+                                    <a href="#" className="media">
+                                        <div className="w-auto h-100">
+                                            <figure className="avatar avatar-80"></figure>
+                                        </div>
+                                        <div className="media-body">
+                                            <h5>dd </h5>
+                                            <p className="small mb-2 text-secondary">ddd</p>
+                                            <p>Poli Bedah, Poli Mata</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div className="card-footer p-0 border-0">
+                                  <button className="btn btn-primary btn-block btn-lg rounded-0"> Masuk </button>
+                                </div>
 
-                    ))}
+                            </div>
+                        </div>
+                    </div>
 
-                  </InfiniteScroll>
+                    <div className="row mx-0 mb-4">
+                        <div className="col">
+                            <div className="card">
+                                <div className="card-body">
+                                    <a href="#" className="media">
+                                        <div className="w-auto h-100">
+                                            <figure className="avatar avatar-80"></figure>
+                                        </div>
+                                        <div className="media-body">
+                                            <h5>dd </h5>
+                                            <p className="small mb-2 text-secondary">ddd</p>
+                                            <p>Poli Bedah, Poli Mata</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div className="card-footer p-0 border-0">
+                                  <button className="btn btn-primary btn-block btn-lg rounded-0"> Masuk </button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="row mx-0 mb-4">
+                        <div className="col">
+                            <div className="card">
+                                <div className="card-body">
+                                    <a href="#" className="media">
+                                        <div className="w-auto h-100">
+                                            <figure className="avatar avatar-80"></figure>
+                                        </div>
+                                        <div className="media-body">
+                                            <h5>dd </h5>
+                                            <p className="small mb-2 text-secondary">ddd</p>
+                                            <p>Poli Bedah, Poli Mata</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div className="card-footer p-0 border-0">
+                                  <button className="btn btn-primary btn-block btn-lg rounded-0"> Masuk </button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="row mx-0 mb-4">
+                        <div className="col">
+                            <div className="card">
+                                <div className="card-body">
+                                    <a href="#" className="media">
+                                        <div className="w-auto h-100">
+                                            <figure className="avatar avatar-80"></figure>
+                                        </div>
+                                        <div className="media-body">
+                                            <h5>dd </h5>
+                                            <p className="small mb-2 text-secondary">ddd</p>
+                                            <p>Poli Bedah, Poli Mata</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div className="card-footer p-0 border-0">
+                                  <button className="btn btn-primary btn-block btn-lg rounded-0"> Masuk </button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="row mx-0 mb-4">
+                        <div className="col">
+                            <div className="card">
+                                <div className="card-body">
+                                    <a href="#" className="media">
+                                        <div className="w-auto h-100">
+                                            <figure className="avatar avatar-80"></figure>
+                                        </div>
+                                        <div className="media-body">
+                                            <h5>dd </h5>
+                                            <p className="small mb-2 text-secondary">ddd</p>
+                                            <p>Poli Bedah, Poli Mata</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div className="card-footer p-0 border-0">
+                                  <button className="btn btn-primary btn-block btn-lg rounded-0"> Masuk </button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="row mx-0 mb-4">
+                        <div className="col">
+                            <div className="card">
+                                <div className="card-body">
+                                    <a href="#" className="media">
+                                        <div className="w-auto h-100">
+                                            <figure className="avatar avatar-80"></figure>
+                                        </div>
+                                        <div className="media-body">
+                                            <h5>dd </h5>
+                                            <p className="small mb-2 text-secondary">ddd</p>
+                                            <p>Poli Bedah, Poli Mata</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div className="card-footer p-0 border-0">
+                                  <button className="btn btn-primary btn-block btn-lg rounded-0"> Masuk </button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="row mx-0 mb-4">
+                        <div className="col">
+                            <div className="card">
+                                <div className="card-body">
+                                    <a href="#" className="media">
+                                        <div className="w-auto h-100">
+                                            <figure className="avatar avatar-80"></figure>
+                                        </div>
+                                        <div className="media-body">
+                                            <h5>dd </h5>
+                                            <p className="small mb-2 text-secondary">ddd</p>
+                                            <p>Poli Bedah, Poli Mata</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div className="card-footer p-0 border-0">
+                                  <button className="btn btn-primary btn-block btn-lg rounded-0"> Masuk </button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="row mx-0 mb-4">
+                        <div className="col">
+                            <div className="card">
+                                <div className="card-body">
+                                    <a href="#" className="media">
+                                        <div className="w-auto h-100">
+                                            <figure className="avatar avatar-80"></figure>
+                                        </div>
+                                        <div className="media-body">
+                                            <h5>dd </h5>
+                                            <p className="small mb-2 text-secondary">ddd</p>
+                                            <p>Poli Bedah, Poli Mata</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div className="card-footer p-0 border-0">
+                                  <button className="btn btn-primary btn-block btn-lg rounded-0"> Masuk </button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="row mx-0 mb-4">
+                        <div className="col">
+                            <div className="card">
+                                <div className="card-body">
+                                    <a href="#" className="media">
+                                        <div className="w-auto h-100">
+                                            <figure className="avatar avatar-80"></figure>
+                                        </div>
+                                        <div className="media-body">
+                                            <h5>dd </h5>
+                                            <p className="small mb-2 text-secondary">ddd</p>
+                                            <p>Poli Bedah, Poli Mata</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div className="card-footer p-0 border-0">
+                                  <button className="btn btn-primary btn-block btn-lg rounded-0"> Masuk </button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="row mx-0 mb-4">
+                        <div className="col">
+                            <div className="card">
+                                <div className="card-body">
+                                    <a href="#" className="media">
+                                        <div className="w-auto h-100">
+                                            <figure className="avatar avatar-80"></figure>
+                                        </div>
+                                        <div className="media-body">
+                                            <h5>dd </h5>
+                                            <p className="small mb-2 text-secondary">ddd</p>
+                                            <p>Poli Bedah, Poli Mata</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div className="card-footer p-0 border-0">
+                                  <button className="btn btn-primary btn-block btn-lg rounded-0"> Masuk </button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="row mx-0 mb-4">
+                        <div className="col">
+                            <div className="card">
+                                <div className="card-body">
+                                    <a href="#" className="media">
+                                        <div className="w-auto h-100">
+                                            <figure className="avatar avatar-80"></figure>
+                                        </div>
+                                        <div className="media-body">
+                                            <h5>dd </h5>
+                                            <p className="small mb-2 text-secondary">ddd</p>
+                                            <p>Poli Bedah, Poli Mata</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div className="card-footer p-0 border-0">
+                                  <button className="btn btn-primary btn-block btn-lg rounded-0"> Masuk </button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                  </div>
 
               </div>
           </div>

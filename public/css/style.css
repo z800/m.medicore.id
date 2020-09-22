@@ -11,15 +11,15 @@
 [Table of contents]
 
 1. base layout css
-2. sidebar css 
-3. fullscreen menu 
-4. modal box 
+2. sidebar css
+3. fullscreen menu
+4. modal box
 5. navigation menu
-6. header css 
-7. style menu css 
-8. button css 
+6. header css
+7. style menu css
+8. button css
 9. background css
-10. dashboard swiper slider 
+10. dashboard swiper slider
 11. swiper css
 12. List group css
 13. card css
@@ -33,9 +33,9 @@
 21. tabs
 22. Footer
 23. iphone x updates
-24. Scrolbar webkit css 
-24. Scrolbar webkit css 
-24. template color scheme 
+24. Scrolbar webkit css
+24. Scrolbar webkit css
+24. template color scheme
 25. Loader css
 26. Media query css
 
@@ -931,7 +931,7 @@ header a:active:focus {
     float: left
 }
 .swipermultiple {
-    margin: 0px 0 35px;
+    margin: 0px 0 0px;
     height: auto;
 }
 .swipermultiple.demo-swiper-multiple-auto .swiper-slide {
@@ -944,7 +944,7 @@ header a:active:focus {
     width: 30%;
 }
 .swipermultiple {
-    padding-bottom: 20px;
+    padding-bottom: 0px;
 }
 .swipermultiple.no-pagination {
     padding-bottom: 0px;
@@ -2439,7 +2439,7 @@ body.theme-dark.color-theme-black .page {
     .navbar .navbar-nav li a.dropdown-toggle::after {
         top: 18px;
     }
-    
+
     .btn {
         text-transform: uppercase;
         padding-right: 15px;
