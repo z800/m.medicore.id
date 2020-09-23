@@ -19,7 +19,7 @@ export class Login extends Component {
         phone: this.state.phone
       }
 
-      axios.get('https://api.medicore.id/', {
+      axios.post('https://m.medicore.id/api', {
         params: {
           foo: 'bar'
         }
